@@ -50,7 +50,30 @@
       <div class="card-container"></div>
       <div class="card-container"></div>
     </div>
-    <button popovertarget="my-dialog">Open dialog</button>
+
+    <button id="open-dialog-btn">Open</button>
+    <dialog id="my-dialog">
+      <form>
+        <label for="title">Name of the Book:</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Name of the Author:</label>
+        <input type="text" name="author" id="author">
+        <label for="noOfPages">Number of Pages</label>
+        <input type="tel" id="noOfPages" name="noOfPages">
+        <label for="readinStatus">Reading Status:</label>
+        
+        <select name="readingStatus" id="readingStatus">
+          <option value="Currently Reading">Currently Reading</option>
+          <option value="Finished">Finished</option>
+          <option value="Want to Read">Want to Read</option>
+          <option value="On Hold">On Hold</option>
+          <option value="Dropped">Dropped</option>
+        </select>
+        <button id="submit-form-btn" formmethod="dialog">Submit</button>
+      </form>
+      <button type="button" id="close-dialog-btn">Close</button>
+    </dialog>
+    
 
     <script src="script.js"></script>
   </body>

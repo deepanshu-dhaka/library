@@ -29,3 +29,22 @@ addBookToLibrary("Mistborn", "Bander Sanderson", 800, "Completed");
 addBookToLibrary("The Way of The Kings", "Brandon Sanderson", 1100, "To Be Read")
 
 displayBooks()
+
+
+const dialog = document.getElementById("my-dialog");
+const closeBtn = document.getElementById("close-dialog-btn");
+const openBtn = document.getElementById("open-dialog-btn");
+const submitBtn = document.getElementById("submit-form-btn")
+
+openBtn.addEventListener("click", () => {
+    dialog.showModal();
+})
+
+closeBtn.addEventListener("click", function () {
+    dialog.close();
+})
+
+submitBtn.addEventListener("click", () => {
+    event.preventDefault();
+    dialog.close();
+})
