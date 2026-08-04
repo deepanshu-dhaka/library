@@ -35,6 +35,7 @@ const dialog = document.getElementById("my-dialog");
 const closeBtn = document.getElementById("close-dialog-btn");
 const openBtn = document.getElementById("open-dialog-btn");
 const submitBtn = document.getElementById("submit-form-btn")
+const formToGetNewData = document.querySelector(".form-to-get-new-data");
 
 openBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -46,5 +47,18 @@ closeBtn.addEventListener("click", function () {
 
 submitBtn.addEventListener("click", () => {
     event.preventDefault();
+    getFormData();
     dialog.close();
 })
+
+function getFormData() {
+    console.log(formToGetNewData)
+    const formData = new FormData(formToGetNewData);
+    // console.log(formData.entries())
+    // for (const [key, value] of formData) {
+    //     console.log(`${key}: ${value}\n`);
+    // }
+    for (const value of formData) {
+        console.log(value)
+    }
+}
