@@ -17,12 +17,63 @@ function addBookToLibrary(title, author, noOfPages, readingStatus) {
     myLibrary.push(book);
 }
 
-function displayBooks() {
+const cardCollectionDiv = document.querySelector(".card-collection")
+
+function displayBook() {
     // for (let i = 0; i < myLibrary.length; i++) {
     //     console.log(myLibrary[i])
     // }
 
+}
 
+
+function createHTMLElements(arrOfFormData) {
+    const cardContainerDiv = document.createElement("div");
+    cardContainerDiv.classList.add("card-container");
+    cardCollectionDiv.appendChild(cardContainerDiv);
+
+    const img = document.createElement("img");
+    img.classList.add("image");
+    cardContainerDiv.appendChild(img);
+    img.src = "images/image-3.avif";
+
+
+    const cardContentDiv = document.createElement("div");
+    cardContentDiv.classList.add("card-content")
+    cardContainerDiv.appendChild(cardContentDiv);
+
+    const bookHeading = document.createElement("h2");
+    bookHeading.classList.add("book-heading");
+    cardContentDiv.appendChild(bookHeading);
+    bookHeading.textContent = arrOfFormData[0];
+
+    const authorName = document.createElement("p")
+    authorName.classList.add("author-name");
+    authorName.textContent = `${arrOfFormData[1]}`;
+    cardContentDiv.appendChild(authorName);
+
+    const pagesAndStatusDiv = document.createElement("div");
+    pagesAndStatusDiv.classList.add("pages-and-status");
+    cardContentDiv.appendChild(pagesAndStatusDiv);
+
+    const pages = document.createElement("p")
+    pages.classList.add("pages");
+    pages.textContent = `${arrOfFormData[2]} pages`
+    pagesAndStatusDiv.appendChild(pages);
+
+    const status = document.createElement("p")
+    status.classList.add("status");
+    status.textContent = `${arrOfFormData[3]}`
+    pagesAndStatusDiv.appendChild(status);
+
+    const statusAndRemoveBtn = document.createElement("div");
+    statusAndRemoveBtn.classList.add("status-button-and-remove-button");
+    cardContentDiv.append(statusAndRemoveBtn);
+
+    const changeStatusBtn = document.createElement("button");
+    changeStatusBtn.classList.add("change-status-btn")
+    changeStatusBtn.textContent = "Change Status";
+    statusAndRemoveBtn.append(changeStatusBtn);
 }
 
 addBookToLibrary("Red Rising", "Pierce Brown", 382, "To Be Read");
@@ -49,7 +100,9 @@ closeBtn.addEventListener("click", function () {
 
 submitBtn.addEventListener("click", () => {
     event.preventDefault();
-    getFormData();
+    const arrOfFormData = getFormData();
+    createHTMLElements(arrOfFormData);
+    addContentToHTMLElements(arrOfFormData);
     dialog.close();
 })
 
@@ -67,5 +120,6 @@ function getFormData() {
     const readingStatus = arrOfValues[3]
 
     addBookToLibrary(title, author, noOfPages, readingStatus);
+    return [title, author, noOfPages, readingStatus]
 
 }
