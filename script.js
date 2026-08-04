@@ -54,11 +54,20 @@ submitBtn.addEventListener("click", () => {
 function getFormData() {
     console.log(formToGetNewData)
     const formData = new FormData(formToGetNewData);
-    // console.log(formData.entries())
-    // for (const [key, value] of formData) {
-    //     console.log(`${key}: ${value}\n`);
-    // }
-    for (const value of formData) {
-        console.log(value)
+
+    let arrOfValues = []
+    for (const [key, value] of formData) {
+        arrOfValues.push(value)
     }
+    console.log(arrOfValues)
+
+    const title = arrOfValues[0];
+    const author = arrOfValues[1];
+    const noOfPages = arrOfValues[2];
+    const readingStatus = arrOfValues[3]
+
+    console.log(title, author, noOfPages, readingStatus)
+
+    addBookToLibrary(title, author, noOfPages, readingStatus);
+
 }
