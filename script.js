@@ -18,17 +18,19 @@ function addBookToLibrary(title, author, noOfPages, readingStatus) {
 }
 
 function displayBooks() {
-    for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i])
-    }
+    // for (let i = 0; i < myLibrary.length; i++) {
+    //     console.log(myLibrary[i])
+    // }
+
+
 }
 
 addBookToLibrary("Red Rising", "Pierce Brown", 382, "To Be Read");
-addBookToLibrary("Blue Rising", "Blue Yellow", 82, "Dropped");
-addBookToLibrary("Mistborn", "Bander Sanderson", 800, "Completed");
-addBookToLibrary("The Way of The Kings", "Brandon Sanderson", 1100, "To Be Read")
+// addBookToLibrary("Blue Rising", "Blue Yellow", 82, "Dropped");
+// addBookToLibrary("Mistborn", "Bander Sanderson", 800, "Completed");
+// addBookToLibrary("The Way of The Kings", "Brandon Sanderson", 1100, "To Be Read")
 
-displayBooks()
+// displayBooks()
 
 
 const dialog = document.getElementById("my-dialog");
@@ -52,21 +54,17 @@ submitBtn.addEventListener("click", () => {
 })
 
 function getFormData() {
-    console.log(formToGetNewData)
     const formData = new FormData(formToGetNewData);
 
     let arrOfValues = []
     for (const [key, value] of formData) {
         arrOfValues.push(value)
     }
-    console.log(arrOfValues)
 
     const title = arrOfValues[0];
     const author = arrOfValues[1];
     const noOfPages = arrOfValues[2];
     const readingStatus = arrOfValues[3]
-
-    console.log(title, author, noOfPages, readingStatus)
 
     addBookToLibrary(title, author, noOfPages, readingStatus);
 
