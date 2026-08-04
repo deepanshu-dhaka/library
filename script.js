@@ -74,6 +74,11 @@ function createHTMLElements(arrOfFormData) {
     changeStatusBtn.classList.add("change-status-btn")
     changeStatusBtn.textContent = "Change Status";
     statusAndRemoveBtn.append(changeStatusBtn);
+
+    const removeBtn = document.createElement("img");
+    removeBtn.classList.add("remove-btn");
+    removeBtn.src = "images/remove-btn.svg"
+    statusAndRemoveBtn.append(removeBtn);
 }
 
 addBookToLibrary("Red Rising", "Pierce Brown", 382, "To Be Read");

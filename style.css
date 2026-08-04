@@ -112,9 +112,10 @@ h1 span {
   border-radius: 30px;
 } */
 
-.status-button-and-remove-button svg {
+.status-button-and-remove-button img {
   width: 26px;
   height: 26px;
+  border-radius: 0px;
   cursor: pointer;
 }
 
