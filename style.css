@@ -103,15 +103,6 @@ h1 span {
   cursor: pointer;
 }
 
-/* .remove-btn {
-  background-color: red;
-  color: white;
-  border: none;
-  font-family: "Fraunces", serif;
-  padding: 10px;
-  border-radius: 30px;
-} */
-
 .status-button-and-remove-button img {
   width: 26px;
   height: 26px;
@@ -143,7 +134,6 @@ input,
 select {
   font-family: inherit;
   font-size: 100%;
-  /* appearance: none; */
 }
 
 .book-name-field,
@@ -203,3 +193,18 @@ select:focus {
   right: 10px;
   position: absolute;
 } */
+
+#open-dialog-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  border: none;
+  color: white;
+  background-color: #2f6b4f;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+#open-dialog-btn:hover {
+  background-color: #25563f;
+}
