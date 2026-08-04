@@ -107,7 +107,6 @@ submitBtn.addEventListener("click", () => {
     event.preventDefault();
     const arrOfFormData = getFormData();
     createHTMLElements(arrOfFormData);
-    addContentToHTMLElements(arrOfFormData);
     dialog.close();
 })
 
