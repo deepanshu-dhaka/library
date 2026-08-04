@@ -11,25 +11,19 @@ function Book(title, author, noOfPages, readingStatus, bookId) {
     this.bookId = bookId;
 }
 
-function addBookToLibrary(title, author, noOfPages, readingStatus) {
-    const bookId = crypto.randomUUID();
+function addBookToLibrary(title, author, noOfPages, readingStatus, bookId) {
+
     const book = new Book(title, author, noOfPages, readingStatus, bookId);
     myLibrary.push(book);
 }
 
 const cardCollectionDiv = document.querySelector(".card-collection")
 
-function displayBook() {
-    // for (let i = 0; i < myLibrary.length; i++) {
-    //     console.log(myLibrary[i])
-    // }
-
-}
-
 
 function createHTMLElements(arrOfFormData) {
     const cardContainerDiv = document.createElement("div");
     cardContainerDiv.classList.add("card-container");
+    cardContainerDiv.setAttribute("data-bookid", `${arrOfFormData[4]}`)
     cardCollectionDiv.appendChild(cardContainerDiv);
 
     const img = document.createElement("img");
@@ -78,15 +72,25 @@ function createHTMLElements(arrOfFormData) {
     const removeBtn = document.createElement("img");
     removeBtn.classList.add("remove-btn");
     removeBtn.src = "images/remove-btn.svg"
+    removeBtn.setAttribute("data-bookid", `${arrOfFormData[4]}`)
     statusAndRemoveBtn.append(removeBtn);
+
+    removeBtn.addEventListener("click", function () {
+        const id = event.target.getAttribute("data-bookid");
+
+        const allCardContainers = document.querySelectorAll(".card-container")
+
+        allCardContainers.forEach((cardContainer) => {
+
+            if (cardContainer.dataset.bookid === id) {
+                cardContainer.remove();
+            }
+
+        })
+    })
 }
 
 addBookToLibrary("Red Rising", "Pierce Brown", 382, "To Be Read");
-// addBookToLibrary("Blue Rising", "Blue Yellow", 82, "Dropped");
-// addBookToLibrary("Mistborn", "Bander Sanderson", 800, "Completed");
-// addBookToLibrary("The Way of The Kings", "Brandon Sanderson", 1100, "To Be Read")
-
-// displayBooks()
 
 
 const dialog = document.getElementById("my-dialog");
@@ -112,6 +116,7 @@ submitBtn.addEventListener("click", () => {
 
 function getFormData() {
     const formData = new FormData(formToGetNewData);
+    const bookId = crypto.randomUUID();
 
     let arrOfValues = []
     for (const [key, value] of formData) {
@@ -123,7 +128,10 @@ function getFormData() {
     const noOfPages = arrOfValues[2];
     const readingStatus = arrOfValues[3]
 
-    addBookToLibrary(title, author, noOfPages, readingStatus);
-    return [title, author, noOfPages, readingStatus]
+    addBookToLibrary(title, author, noOfPages, readingStatus, bookId);
+    return [title, author, noOfPages, readingStatus, bookId]
 
 }
+
+
+

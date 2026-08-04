@@ -14,61 +14,43 @@
   </head>
   <body>
     <h1>Library: <span>A Book Tracker</span></h1>
-    <div class="card-collection">
-      <div class="card-container">
-        <img src="images/image-3.avif" alt="book cover" />
+    <div class="card-collection"></div>
 
-        <div class="card-content">
-          <h2>Red Rising</h1>
-          <p class="author-name">Pierce Brown</p>
-
-        <div class="pages-and-status">
-          <p class="pages">382 pages</p>
-          <p class="status">Reading</p>
-        </div>
-        <div class="status-button-and-remove-button">
-          <button class="change-status-btn">Change Status</button>
-          <img src="images/remove-btn.svg" alt="">
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <button id="open-dialog-btn">New Book</button>
-    <dialog id="my-dialog" >
+    <button id="open-dialog-btn">Add New Book</button>
+    <dialog id="my-dialog">
       <form class="form-to-get-new-data">
-        <div class="book-name-field"><label for="title">Name of the Book:</label>
-        <input type="text" name="title" id="title"></div>
-        
+        <div class="book-name-field">
+          <label for="title">Name of the Book:</label>
+          <input type="text" name="title" id="title" />
+        </div>
+
         <div class="author-name-field">
           <label for="author">Name of the Author:</label>
-        <input type="text" name="author" id="author">
+          <input type="text" name="author" id="author" />
         </div>
         <div class="pages-and-reading-status">
-          <div class="page-field"><label for="noOfPages">Number of Pages</label>
-        <input type="tel" id="noOfPages" name="noOfPages"></div>
+          <div class="page-field">
+            <label for="noOfPages">Number of Pages</label>
+            <input type="tel" id="noOfPages" name="noOfPages" />
+          </div>
 
-        
-        
-        <div class="select-wrapper">
-          <label for="readinStatus">Reading Status:</label>
-          <select name="readingStatus" id="readingStatus">
-          <option value="Currently Reading">Currently Reading</option>
-          <option value="Finished">Finished</option>
-          <option value="Want to Read">Want to Read</option>
-          <option value="On Hold">On Hold</option>
-          <option value="Dropped">Dropped</option>
-        </select>
-        </div>
+          <div class="select-wrapper">
+            <label for="readinStatus">Reading Status:</label>
+            <select name="readingStatus" id="readingStatus">
+              <option value="Currently Reading">Currently Reading</option>
+              <option value="Finished">Finished</option>
+              <option value="Want to Read">Want to Read</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Dropped">Dropped</option>
+            </select>
+          </div>
         </div>
         <div class="submit-and-close-btn">
           <button id="submit-form-btn" formmethod="dialog">Submit</button>
           <button type="button" id="close-dialog-btn">Close</button>
         </div>
       </form>
-      
     </dialog>
-    
 
     <script src="script.js"></script>
   </body>
