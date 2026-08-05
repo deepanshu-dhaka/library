@@ -9,6 +9,31 @@ function Book(title, author, noOfPages, readingStatus, bookId) {
     this.noOfPages = noOfPages;
     this.readingStatus = readingStatus;
     this.bookId = bookId;
+    this.readingStatusCounter = 0;
+}
+
+const readingStatusArr = [
+    "Currently Reading",
+    "Finished",
+    "Want to Read",
+    "On Hold",
+    "Dropped"
+]
+
+
+
+Book.prototype.changeReadingStatus = function (readingStatus) {
+    let counter = readingStatusArr.indexOf(readingStatus);
+    if (counter < 5) {
+        if (counter == 4) {
+            counter = 0;
+        }
+        else {
+            counter = counter + 1;
+        }
+    }
+    return readingStatusArr[counter];
+
 }
 
 function addBookToLibrary(title, author, noOfPages, readingStatus, bookId) {
@@ -57,7 +82,8 @@ function createHTMLElements(arrOfFormData) {
 
     const status = document.createElement("p")
     status.classList.add("status");
-    status.textContent = `${arrOfFormData[3]}`
+    status.textContent = `${arrOfFormData[3]}`;
+    status.setAttribute("data-bookid", `${arrOfFormData[4]}`);
     pagesAndStatusDiv.appendChild(status);
 
     const statusAndRemoveBtn = document.createElement("div");
@@ -67,6 +93,7 @@ function createHTMLElements(arrOfFormData) {
     const changeStatusBtn = document.createElement("button");
     changeStatusBtn.classList.add("change-status-btn")
     changeStatusBtn.textContent = "Change Status";
+    changeStatusBtn.setAttribute("data-bookid", `${arrOfFormData[4]}`);
     statusAndRemoveBtn.append(changeStatusBtn);
 
     const removeBtn = document.createElement("img");
@@ -87,10 +114,25 @@ function createHTMLElements(arrOfFormData) {
             }
 
         })
+
+
+
     })
+    // changeStatusBtn.addEventListener("click", changeStatus);
+    // function changeStatus() {
+    //     const id = event.target.getAttribute("data-bookid");
+
+    //     for (const obj of myLibrary) {
+    //         if (obj.bookId === id) {
+    //             obj.changeReadingStatus(obj.readingStatus);
+    //             console.log(id)
+    //         }
+    //     }
+
+    // }
 }
 
-addBookToLibrary("Red Rising", "Pierce Brown", 382, "To Be Read");
+
 
 
 const dialog = document.getElementById("my-dialog");
@@ -135,3 +177,22 @@ function getFormData() {
 
 
 
+document.addEventListener("click", function () {
+
+    let newStatus;
+    let id = event.target.getAttribute("data-bookid");
+    for (const obj of myLibrary) {
+        if (obj.bookId == id) {
+            obj.readingStatus = obj.changeReadingStatus(obj.readingStatus);
+            newStatus = obj.readingStatus;
+            console.log(obj.readingStatus);
+        }
+    }
+
+    const allReadingStatusPara = document.querySelectorAll(".status");
+    allReadingStatusPara.forEach(function (readingStatusPara) {
+        if (id == readingStatusPara.getAttribute("data-bookid")) {
+            readingStatusPara.textContent = newStatus;
+        }
+    })
+})
